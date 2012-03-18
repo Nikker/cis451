@@ -1,0 +1,174 @@
+body {
+	background-color: #f1fffa;
+	margin: 0px;
+	padding: 0px;
+	background-image: url(images/gradient-bg.gif);
+	background-repeat: repeat-x;
+	font-family: calibri, arial, sans-serif;
+	font-size: 14px;
+	color: #4a7a68;
+}
+
+#main {
+	width: 1000px;
+	margin: 0px auto;
+	background-color: white;
+	box-shadow: 4px 4px 5px rgba(0,0,0,0.06);
+	position: relative;
+}
+
+#circle {
+	background-color: #5c947e;
+	border: 3px solid white;
+	width: 155px;
+	height: 155px;
+	border-radius: 155px;
+	background-image: url(images/circle-lizard.png);
+	background-position: bottom left;
+	background-repeat: no-repeat;
+	box-shadow: 3px 3px 3px rgba(0,0,0,0.06);
+	position: absolute;
+	z-index: 999;
+	top: 0px; 
+	left: -25px;
+}
+
+#header, #main {
+	border-top-left-radius: 150px;
+}
+
+#header {
+	background-color: #baddce;
+	padding-top: 1.5em;
+	position: relative;
+	border-bottom: 1px solid #8ec2ae;
+	height: 90px;
+}
+
+#body {
+	position: relative;
+	min-height: 200px;
+}
+
+#header h1 {
+	margin: 0;
+}
+
+#header h1 a {
+	display: block;
+	margin: 10px 0 0 145px;
+	overflow: hidden;
+	text-indent: -999em;
+	background-image: url(images/header.png);
+	width: 312px;
+	height: 56px;
+}
+
+.menu {
+	background-color: #e5f9f6;
+	border-color: #b4d0ce;
+}
+
+#navigation {
+	width: 95%;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	text-align: right;
+	text-transform: uppercase;
+	line-height: 1.5em;
+}
+
+#quick-menu {
+	border-style: solid;
+	border-width: 1px;
+	padding: 0px 15px 0px 40px;
+	height: 30px;
+	border-radius: 15px;
+	text-align: right;
+	position: absolute;
+	bottom: -16px;
+	left: 100px;
+	z-index: 998;
+}
+
+#quick-menu a {
+	display: inline-block;
+	margin: 1.5px 4px 0;
+	height: 27px;
+	width: 27px;
+	line-height: 27px;
+	text-indent: 9999em;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#quick-menu a.bank { background-image: url(images/bank.png); }
+#quick-menu a.inventory { background-image: url(images/inventory.png); }
+#quick-menu a.chars { background-image: url(images/characters.png); }
+#quick-menu a.messages { background-image: url(images/messages.png); }
+
+#user-menu {
+	border-style: solid;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	border-width: 0 0 1px 1px;
+	padding: 10px 20px;
+	border-bottom-left-radius: 20px;
+}
+
+#user-menu li:before {
+	content: '\2022  ';
+	color: #bdd8d1;
+	padding: 0 2px;
+}
+
+#user-menu li:first-child:before {
+	content: '';
+}
+
+#navigation ul, #quick-menu ul, #user-menu ul {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+#navigation li, #quick-menu li, #user-menu li {
+	display: inline-block;
+}
+
+#navigation li {
+	border-right: 1px solid #baddce;
+	padding: 0 10px;
+}
+
+#navigation li a {
+	color: #81a3a2;
+	text-decoration: none;
+}
+
+#search {
+	position: absolute;
+	bottom: 15px;
+	right: 15px;
+}
+
+#search input{
+	vertical-align: top;
+	font-size: 10px;
+}
+
+#content, #body {
+	overflow: hidden;
+}
+
+#content {
+	margin-top: 50px;
+	padding: 20px 40px;
+}
+
+#content > h1:first-child {
+	margin-top: 0px;
+}
