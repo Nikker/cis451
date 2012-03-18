@@ -5,23 +5,23 @@ error_reporting(E_ALL);
 
 require('inc/includes.php');
 
-// Routing rules - regular expressions should be written carefully as what they match will be removed from the url before being passed to the handler
-// For example: Use a lookahead to ensure that a directory ends in a slash
-$rules = array(
-  '#^/?$#' => 'home.php',
-  '#^/forum(?=/)#i' => 'forum/handler.php',
-  '/.*/' => '404.php'
+$request = array_key_exists('REDIRECT_URL', $_SERVER)? $_SERVER['REDIRECT_URL'] : '/';
+$uri = str_replace(BETA_ROOT_URL, '', $request);
+
+// Route directories to their handlers
+// Given a URI request such as "/forum/...", a handler "forum/handler.php" 
+// will be automatically attempted if 'forum' is not a key in the following array
+$dirs = array(
+  '' => 'home.php'
 );
 
-$uri = str_replace(BETA_ROOT_URL, '', @$_SERVER['REDIRECT_URL']);
-foreach ($rules as $regex=>$handler) {
-  if (preg_match($regex, $uri)) {
-    // Remove the matched part of the URI before passing it on..
-    $uri = preg_replace($regex,'', $uri);
-    break;
-  }
-}
+// Get the directory from the URI
+preg_match('#^/(?<dir>[^/]*)(?<subpath>.*)$#', $uri, $match);
 
-Beta::run_handler($handler, $uri);
+if (array_key_exists($match['dir'], $dirs)) {
+  Beta::run_handler($dirs[$match['dir']], $match['subpath']);
+} else {
+  Beta::run_handler("{$match['dir']}/handler.php", $match['subpath']);
+}
 
 ?>
