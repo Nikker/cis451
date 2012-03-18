@@ -15,10 +15,10 @@
 			</div>
 			<div id="quick-menu" class="menu">
 				<ul>
-					<li><a href="#" class="bank">Bank</a></li>
-					<li><a href="#" class="inventory">Inventory</a></li>
-					<li><a href="#" class="chars">Characters</a></li>
-					<li><a href="#" class="messages">Messages</a></li>
+					<li><a href="<?php echo BETA_ROOT_URL; ?>/bank/" class="bank">Bank</a></li>
+					<li><a href="<?php echo BETA_ROOT_URL; ?>/inventory/" class="inventory">Inventory</a></li>
+					<li><a href="<?php echo BETA_ROOT_URL; ?>/characters/" class="chars">Characters</a></li>
+					<li><a href="<?php echo BETA_ROOT_URL; ?>/messages/" class="messages">Messages</a></li>
 				</ul>
 			</div>
 		</div><!-- #header -->
