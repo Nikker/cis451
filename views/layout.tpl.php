@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title><?php echo $this->eprint($this->title); ?></title>
+	<title><?php $this->title and print $this->eprint($this->title) . " | "; ?>Shukumei Beta</title>
 	<link rel="stylesheet" href="<?php echo BETA_ROOT_URL; ?>/style/style.css" />
 </head>
 <body>
@@ -24,10 +24,10 @@
 		</div><!-- #header -->
 		<div id="navigation" class="menu">
 			<ul>
-				<li><a href="#">News</a></li>
-				<li><a href="#">Games</a></li>
-				<li><a href="#">Forum</a></li>
-				<li><a href="#">Account</a></li>
+				<li><a href="<?php echo BETA_ROOT_URL; ?>/news/">News</a></li>
+				<li><a href="<?php echo BETA_ROOT_URL; ?>/games/">Games</a></li>
+				<li><a href="<?php echo BETA_ROOT_URL; ?>/forum/">Forum</a></li>
+				<li><a href="<?php echo BETA_ROOT_URL; ?>/account/">Account</a></li>
 			</ul>
 		</div><!-- #navigation -->
 		<div id="body">
@@ -40,11 +40,12 @@
 				</ul>
 			</div>
 			<div id="content">
+        <?php echo $this->content; ?>
 			</div> <!-- #content -->
+      <div id="footer">
+        Copyright &copy; <?php echo date('Y'); ?> Shukumei Beta.  All rights reserved.
+      </div>
 		</div> <!-- #body -->
-    <div id="footer">
-      Copyright &copy; <?php echo date('Y'); ?> Shukumei Beta.  All rights reserved.
-    </div>
 	</div> <!-- #main -->
 </body>
 </html>

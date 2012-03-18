@@ -1,3 +1,5 @@
+@import url("forum.css");
+
 body {
 	background-color: #f1fffa;
 	margin: 0px;
@@ -5,8 +7,20 @@ body {
 	background-image: url(images/gradient-bg.gif);
 	background-repeat: repeat-x;
 	font-family: calibri, arial, sans-serif;
-	font-size: 14px;
+	font-size: 13px;
 	color: #4a7a68;
+}
+
+.one-third {
+  width: 33%;
+}
+
+.two-thirds {
+  width: 66%;
+}
+
+.half {
+  width: 50%;
 }
 
 #main {
@@ -171,4 +185,22 @@ body {
 
 #content > h1:first-child {
 	margin-top: 0px;
+}
+
+#content h1 {
+  font-size: 22px;
+}
+
+#content h2 {
+  font-size: 18px;
+}
+
+#footer {
+  margin: 10px 40px 0;
+  padding: 10px;
+  border-top: 1px solid #ebebeb;
+  color: #b7b7b7;
+  text-align: center;
+  font-size: 11px;
+  font-style: italic;
 }

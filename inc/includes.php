@@ -3,5 +3,6 @@
 include_once('settings.php');
 include_once('dbconn.php');
 include_once('templating.php');
+include_once('beta.php');
 
 ?>
