@@ -1,3 +1,22 @@
 #forums .category, #forums .forum {
   margin: 1em;
 }
+
+#posts .post {
+  margin: 1em;
+  overflow: hidden;
+}
+
+#posts .post .author {
+  float: left;
+}
+
+#posts .post .time {
+  float: right;
+}
+
+#posts .post .content {
+  padding: 0.5em;
+  background-color: #E5F9F6;
+  clear: both;
+}

@@ -5,7 +5,7 @@
     <h2><?php echo $this->eprint($cat['title']); ?></h2>
     <?php foreach ($cat['forums'] as $forum): ?>
       <div class="forum">
-        <h3><a href="<?php echo $this->eprint($forum['slug']); ?>"><?php echo $this->eprint($forum['title']); ?></a></h3>
+        <h3><a href="<?php echo $this->eprint($forum['slug']); ?>/"><?php echo $this->eprint($forum['title']); ?></a></h3>
         <div class="description"><?php echo $this->eprint($forum['desc']); ?></div>
       </div>
     <?php endforeach; ?>

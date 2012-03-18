@@ -15,7 +15,11 @@ RewriteRule . - [E=SITE_BASE:%{ENV:HOME_DIR}/public_html/cis451/final]
 RewriteCond %{ENV:SITE_BASE}/static/%{ENV:STRIPPED_REQUEST} -f
 RewriteRule ^.*$ static/$0 [L]
 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^.*$ $0/ [L,R=301]
+
 # Redirect everything else through the index file
-RewriteCond %{REQUEST_URI} !^/~nikker/cis451/final/index.php
+RewriteCond %{REQUEST_URI} !^/~nikker/cis451/final/index\.php
 RewriteCond %{REQUEST_URI} !^/~nikker/cis451/final/static/?
 RewriteRule . index.php [L]

@@ -13,7 +13,7 @@ $rules = array(
   '/.*/' => '404.php'
 );
 
-$uri = str_replace(BETA_ROOT_URL, '', $_SERVER['REDIRECT_URL']);
+$uri = str_replace(BETA_ROOT_URL, '', @$_SERVER['REDIRECT_URL']);
 foreach ($rules as $regex=>$handler) {
   if (preg_match($regex, $uri)) {
     // Remove the matched part of the URI before passing it on..
