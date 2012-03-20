@@ -20,6 +20,6 @@ RewriteCond %{REQUEST_URI} !(.*)/$
 RewriteRule ^.*$ $0/ [L,R=301]
 
 # Redirect everything else through the index file
-RewriteCond %{REQUEST_URI} !^/~nikker/cis451/final/index\.php
-RewriteCond %{REQUEST_URI} !^/~nikker/cis451/final/static/?
+RewriteCond %{ENV:STRIPPED_REQUEST} !^index\.php
+RewriteCond %{ENV:STRIPPED_REQUEST} !^static/?
 RewriteRule . index.php [L]
