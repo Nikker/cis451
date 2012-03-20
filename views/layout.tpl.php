@@ -4,6 +4,9 @@
 	<meta charset="utf-8" />
 	<title><?php $this->title and print $this->eprint($this->title) . " | "; ?>Shukumei Beta</title>
 	<link rel="stylesheet" href="<?php echo BETA_ROOT_URL; ?>/style/style.css" />
+  <?php if (property_exists($this, 'stylesheets')): foreach ($this->stylesheets as $stylesheet): ?>
+    <link rel="stylesheet" href="<?php echo BETA_ROOT_URL; ?>/style/<?php echo $stylesheet; ?>" />
+  <?php endforeach; endif; ?>
 </head>
 <body>
 	<div id="main">
@@ -33,7 +36,7 @@
 		<div id="body">
 			<div id="user-menu" class="menu">
 				<ul>
-					<li>Heya, <strong>Guest</strong></li>
+					<li>Heya, <strong><a href="<?php echo BETA_ROOT_URL; ?>/user/<?php $this->eprint(Beta::username()); ?>"><?php $this->eprint(Beta::username()); ?></a></strong></li>
 					<li>14,000 g</li>
 					<li><?php echo date("F jS, Y"); ?></li>
 					<li><?php echo date("g:i a"); ?></li>
