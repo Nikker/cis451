@@ -207,3 +207,27 @@ a {
   font-size: 11px;
   font-style: italic;
 }
+
+form ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
+
+ul textarea, ul input[type=text] {
+  width: 30em;
+  vertical-align: center;
+}
+
+ul textarea {
+  height: 10em;
+  vertical-align: top;
+}
+
+form ul label {
+  min-width: 5em;
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+}
