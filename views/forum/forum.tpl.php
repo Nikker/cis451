@@ -7,7 +7,7 @@
   <?php if (empty($this->forum['threads'])): ?>
     <p>There are no threads in this forum yet.  You should post one!</p>
   <?php else: ?>
-    <?php $this->display('forum/paging.tpl.php'); ?>
+    <?php $this->display('paging.tpl.php'); ?>
     <ul>
     <?php foreach ($this->forum['threads'] as $thread): ?>
       <li>
@@ -20,18 +20,18 @@
       </li>
     <?php endforeach; ?>
     </ul>
-    <?php $this->display('forum/paging.tpl.php'); ?>
+    <?php $this->display('paging.tpl.php'); ?>
   <?php endif; ?>
   <form action="" method="POST">
     <h2>New Thread</h2>
     <?php $this->display('form-error.tpl.php'); ?>
     <ul>
-      <li><label>Title <input type="text" size="50" name="title" value="<?php
+      <li><label for="thread_title">Title</label> <input type="text" size="50" id="thread_title" name="title" value="<?php
         if (array_key_exists('title',$_POST)) echo $this->eprint($_POST['title']);
-      ?>" /></label></li>
-      <li><label>Content <textarea name="content"><?php
+      ?>" /></li>
+      <li><label for="thread_content">Content</label> <textarea id="thread_content" name="content"><?php
         if (array_key_exists('content',$_POST)) echo $this->eprint($_POST['content']);
-      ?></textarea></label></li>
+      ?></textarea></li>
       <li><input type="submit" value="Post New Thread" /></li>
     </ul>
   </form>

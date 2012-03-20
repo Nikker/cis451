@@ -8,7 +8,7 @@
   <?php if (empty($this->thread['posts'])): ?>
     <p>There are no posts in this thread...</p>
   <?php else: ?>
-    <?php $this->display('forum/paging.tpl.php'); ?>
+    <?php $this->display('paging.tpl.php'); ?>
     <?php foreach ($this->thread['posts'] as $post): ?>
       <div class="post" id="post<?php echo intval($post['id']); ?>">
         <div class="author"><a href="<?php echo BETA_ROOT_URL; ?>/user/<?php $this->eprint($post['author']); ?>/">
@@ -18,7 +18,7 @@
         <div class="content"><?php echo nl2br($this->escape($post['content'])); ?></div>
       </div>
     <?php endforeach; ?>
-    <?php $this->display('forum/paging.tpl.php'); ?>
+    <?php $this->display('paging.tpl.php'); ?>
   <?php endif; ?>
   <form action="" method="POST">
     <h2>New Reply</h2>
