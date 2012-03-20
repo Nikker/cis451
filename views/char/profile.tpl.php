@@ -19,7 +19,7 @@
   </ul>
   <?php if (property_exists($this->character, 'content')): ?>
     <div class="content">
-      <?php $this->eprint($this->character->content); ?>
+      <?php echo nl2br($this->escape($this->character->content)); ?>
     </div>
   <?php else: var_dump($this->character); ?>
   <?php endif; ?>

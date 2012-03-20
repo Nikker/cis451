@@ -4,7 +4,7 @@
 <div id="profile">
 <?php if ($this->user->content): ?>
   <div class="content section">
-    <?php $this->eprint($this->user->content); ?>
+    <?php echo nl2br($this->escape($this->user->content)); ?>
   </div>
 <?php endif; ?>
   <div class="details section">
