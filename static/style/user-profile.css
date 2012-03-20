@@ -1,0 +1,15 @@
+#profile .characters ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+#profile .character {
+  display: inline-block;
+  text-align: center;
+  margin: 5px;
+}
+
+#profile .character a {
+  display: block;
+}
