@@ -14,7 +14,9 @@
 			<h1><a href="<?php echo BETA_ROOT_URL; ?>">Shukumei</a></h1>
 			<div id="circle"></div>
 			<div id="search">
-				<input type="text" placeholder="search" name="q" /> <input type="image" src="<?php echo BETA_ROOT_URL; ?>/style/images/go.png" value="go" />
+        <form action="<?php echo BETA_ROOT_URL; ?>/search/" method="post">
+          <input type="text" placeholder="search" name="q" /> <input type="image" src="<?php echo BETA_ROOT_URL; ?>/style/images/go.png" value="go" />
+        </form>
 			</div>
 			<div id="quick-menu" class="menu">
 				<ul>
@@ -27,17 +29,19 @@
 		</div><!-- #header -->
 		<div id="navigation" class="menu">
 			<ul>
+        <!--
 				<li><a href="<?php echo BETA_ROOT_URL; ?>/news/">News</a></li>
 				<li><a href="<?php echo BETA_ROOT_URL; ?>/games/">Games</a></li>
+        -->
 				<li><a href="<?php echo BETA_ROOT_URL; ?>/forum/">Forum</a></li>
-				<li><a href="<?php echo BETA_ROOT_URL; ?>/account/">Account</a></li>
+				<li><a href="<?php echo BETA_ROOT_URL; ?>/user/<?php echo Beta::username(); ?>/">Account</a></li>
 			</ul>
 		</div><!-- #navigation -->
 		<div id="body">
 			<div id="user-menu" class="menu">
 				<ul>
 					<li>Heya, <strong><a href="<?php echo BETA_ROOT_URL; ?>/user/<?php $this->eprint(Beta::username()); ?>"><?php $this->eprint(Beta::username()); ?></a></strong></li>
-					<li>14,000 g</li>
+					<li><?php echo number_format(Beta::user_info()->gold); ?> g</li>
 					<li><?php echo date("F jS, Y"); ?></li>
 					<li><?php echo date("g:i a"); ?></li>
 				</ul>

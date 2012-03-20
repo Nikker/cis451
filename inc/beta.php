@@ -15,6 +15,11 @@ class Beta {
     return 'Guest';
   }
 
+  public static function user_info() {
+    global $db;
+    return $db->query(sprintf("SELECT * FROM `user` WHERE `user_id` = %s;",self::user_id()))->fetch_object();
+  }
+
   // Include the specified handler else a 404 else display a basic 404
   public static function run_handler($h, $uri = '', $raw_params = array()) {
     global $tpl, $db;
