@@ -1,8 +1,5 @@
 <?php
 
-ini_set('error_reporting',E_ALL);
-error_reporting(E_ALL);
-
 require('inc/includes.php');
 
 $request = array_key_exists('REDIRECT_URL', $_SERVER)? $_SERVER['REDIRECT_URL'] : '/';
