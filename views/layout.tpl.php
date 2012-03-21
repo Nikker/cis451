@@ -35,6 +35,7 @@
         -->
 				<li><a href="<?php echo BETA_ROOT_URL; ?>/forum/">Forum</a></li>
 				<li><a href="<?php echo BETA_ROOT_URL; ?>/user/<?php echo Beta::username(); ?>/">Account</a></li>
+				<li><a href="<?php echo BETA_ROOT_URL; ?>/user/">Users</a></li>
 			</ul>
 		</div><!-- #navigation -->
 		<div id="body">
