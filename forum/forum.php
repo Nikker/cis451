@@ -1,5 +1,7 @@
 <?php
 
+// $db and $tpl are global variables.  How can I get around using globals?  Maybe a singleton?
+
 $forum = $db->query(
   sprintf("SELECT `forum_category`.`name` as `cat`, 
     `slug`, 
