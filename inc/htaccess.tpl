@@ -4,12 +4,11 @@ deny from all
 </Files>
 
 RewriteEngine on
-RewriteBase /~nikker/cis451/final
+RewriteBase {{ BETA_ROOT_URL }}
 
 # Set some rewrite environment vars
 RewriteRule ^.*$ - [E=STRIPPED_REQUEST:$0]
-RewriteRule . - [E=HOME_DIR:/home/users/nikker]
-RewriteRule . - [E=SITE_BASE:%{ENV:HOME_DIR}/public_html/cis451/final]
+RewriteRule . - [E=SITE_BASE:{{ BETA_ROOT_PATH }}]
 
 # Serve things in the statics directory as if they were at the root
 RewriteCond %{ENV:SITE_BASE}/static/%{ENV:STRIPPED_REQUEST} -f
