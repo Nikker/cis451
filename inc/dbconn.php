@@ -1,13 +1,12 @@
 <?php
-$db_cnf = @parse_ini_file(BETA_MYCNF_DIR . '/.my.cnf');
+$db_cnf = @parse_ini_file(BETA_DBCONF);
 
 $db = new mysqli(
   $db_cnf['host'], 
-  'beta',
-  'holy password dude',
-  'cis451_final',
-  $db_cnf['port'],
-  $db_cnf['socket']
+  $db_cnf['username'], 
+  $db_cnf['password'], 
+  $db_cnf['database'], 
+  $db_cnf['port']
 ) or die('Could not connect to database');
 
 ?>
