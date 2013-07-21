@@ -1,25 +1,30 @@
 <?php
 
 
-$count = $db->query("SELECT COUNT(*) as `count` FROM `user`;")->fetch_object()->count;
+$count = Beta::query("SELECT COUNT(*) as `count` FROM `user`;")->fetch_object()->count;
 
-$tpl->page = array_key_exists('page', $_GET)? $_GET['page'] : 1;
+$page = array_key_exists('page', $_GET)? $_GET['page'] : 1;
 $per_page = 20;
-$start = ($tpl->page - 1) * $per_page;
-$tpl->pages = ceil($count/$per_page);
+$start = ($page - 1) * $per_page;
+$pages = ceil($count/$per_page);
 
-$users = $db->query(
+$users = Beta::query(
   sprintf("SELECT * FROM `user` LIMIT %d,%d",$start,$per_page)
-) or die($db->error);
+);
 
-$tpl->users = array();
+$user_list = array();
 while ($user = $users->fetch_object()) {
-  $tpl->users[] = $user;
+  $user_list[] = $user;
 }
 
-$tpl->title = "User list";
-if ($tpl->page > 1) $tpl->title .= "- page {$tpl->page}";
-$tpl->content = $tpl->fetch('user/list.tpl.php');
-$tpl->display();
+Beta::display(
+	'user/list.tpl.php',
+	'User list' . ($page > 1? " - page {$page}" : ""),
+	array(
+		'page' => $page,
+		'pages' => $pages,
+		'users' => $user_list
+	)
+);
 
 ?>

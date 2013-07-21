@@ -1,3 +1,5 @@
+# This htaccess file is generated from a template supplying server paths.  Run scripts/create_htaccess.php to generate.
+
 <Files .htaccess>
 order allow,deny
 deny from all

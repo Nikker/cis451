@@ -1,6 +1,6 @@
 <?php
 
-$char = $db->query(
+$char = Beta::query(
   sprintf("SELECT `character`.*, 
       `char_desc`.*,
       `username` as `owner`,
@@ -14,16 +14,16 @@ $char = $db->query(
     JOIN `char_species` USING (`species_id`)
     JOIN `char_color` USING (`color_id`)
     WHERE `character`.`name` = '%s'", $params['char'])
-) or die($db->error);
+) or die("Can't get character");
 
 if ($char->num_rows == 0) {
   Beta::error_page("Character not found","There is no character by this name.");
 }
 
-$tpl->character = $char->fetch_object();
-
-$tpl->title = sprintf("Character Profile: %s", $tpl->character->name);
-$tpl->content = $tpl->fetch('char/profile.tpl.php');
-$tpl->display();
+Beta::display(
+	'char/profile.tpl.php',
+	sprintf("Character Profile: %s", $tpl->character->name),
+	array( 'character' => $char->fetch_object() )
+);
 
 ?>

@@ -2,6 +2,7 @@
 
 if (php_sapi_name() !== "cli") die("Command line only");
 
+chdir(dirname(__FILE__));
 require "../inc/settings.php";
 
 

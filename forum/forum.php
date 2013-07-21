@@ -1,8 +1,6 @@
 <?php
 
-// $db and $tpl are global variables.  How can I get around using globals?  Maybe a singleton?
-
-$forum = $db->query(
+$forum = Beta::query(
   sprintf("SELECT `forum_category`.`name` as `cat`, 
     `slug`, 
     `forum`.`name` as `name`,
@@ -10,46 +8,50 @@ $forum = $db->query(
   FROM `forum`
   JOIN `forum_category` USING (`cat_id`)
   WHERE `slug` = '%s'", $params['forum'])
-) or die ($db->error);
+) or die("Can't query forum");
 
 if ($forum->num_rows == 0) {
-  $tpl->title = "Forum doesn't exist";
-  $tpl->message = "This forum doesn't exist";
-  $tpl->content = $tpl->fetch('error.tpl.php');
-  $tpl->display();
+	Beta::error_page("Forum doesn't exist", "This forum doesn't exist");
   exit;
 }
 
-$tpl->forum = $forum->fetch_assoc();
+$forum = $forum->fetch_assoc();
 
-$num_threads = $db->query(
+$num_threads = Beta::query(
   sprintf("SELECT COUNT(*) as `num` 
     FROM `forum_thread` 
     JOIN `forum` USING (`forum_id`)
     WHERE `forum`.`slug` = '%s'",$params['forum'])
 )->fetch_object()->num;
 
-$tpl->page = array_key_exists('page', $_GET)? $_GET['page'] : 1;
-$tpl->pages = ceil($num_threads/Beta::threads_per_page);
+$page = array_key_exists('page', $_GET)? $_GET['page'] : 1;
+$pages = ceil($num_threads/Beta::threads_per_page);
 
-$start = ($tpl->page - 1) * Beta::threads_per_page;
+$start = ($page - 1) * Beta::threads_per_page;
 
-$threads = $db->query(
+$threads = Beta::query(
   sprintf("SELECT `thread_id` as `id`, `title`, `username` as `author` 
     FROM `forum_thread` 
     JOIN `forum` USING(`forum_id`)
     JOIN `user` USING(`user_id`)
     WHERE `forum`.`slug` = '%s'
     LIMIT %d,%d", $params['forum'], $start, Beta::threads_per_page)
-) or die($db->error);
+);
 
-$tpl->forum['threads'] = array();
+$forum['threads'] = array();
 while ($thread = $threads->fetch_assoc()) {
-  $tpl->forum['threads'][] = $thread;
+  $forum['threads'][] = $thread;
 }
 
-$tpl->title = $tpl->forum['name'] . " | Forum";
-$tpl->content = $tpl->fetch('forum/forum.tpl.php');
-$tpl->display();
+
+Beta::display(
+	'forum/forum.tpl.php',
+	$forum['name'] . " | Forum",
+	array(
+		'page' => $page,
+		'pages' => $pages,
+		'forum' => $forum
+	)
+);
 
 ?>

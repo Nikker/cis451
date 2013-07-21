@@ -4,7 +4,7 @@ if (!current_user_can_edit_character($raw_params['char'])) include('edit.php');
 
 // Nothing else needs to be validated, an empty profile is fine
 
-$stmnt = $db->prepare("REPLACE INTO `char_desc` 
+$stmnt = Beta::db()->prepare("REPLACE INTO `char_desc` 
   SET `char_id` = (SELECT `char_id` FROM `character` WHERE `name` = ?),
     `content` = ?");
 
@@ -15,7 +15,7 @@ if ($stmnt) {
   }
 }
 
-$tpl->form_error = 'There was a problem inserting into the database.';
+Beta::tpl()->form_error = 'There was a problem inserting into the database.';
 include('edit.php');
 
 ?>

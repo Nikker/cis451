@@ -1,5 +1,9 @@
 <?php
 
+// Server-specific settings are here.  
+// Implementation specific settings can be found in the Beta class in beta.php
+
+
 define('BETA_HOST', 'example.com');
 
 // Also set this in the .htaccess rewrite base
