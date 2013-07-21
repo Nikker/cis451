@@ -10,6 +10,7 @@
 
 \title{CIS 451 Database Processing - Final Project}
 \author{Nikki DelRosso}
+\date{March 21, 2012}
 \maketitle
 \thispagestyle{empty}
 \let\cleardoublepage\clearpage
@@ -104,7 +105,7 @@ The structure and contents of the database can be found in a dump at \\ \url{htt
 \section{Implementation code}
 This application was custom built with the exception of the Savant3 PHP templating library as sort of a "query-view-controller" system.  An .htaccess file routes all requests through an index.php file in the root of the project.  Static files are the one exception to this routing, and are served from the static/ directory.  From here, the index.php file tries to find a handler for the application specified by the URL; first it checks to see if it has a rule fo the given URL, and if not it looks for a handler.php file in the first subdirectory of the URL (ex: the request for "/forum/announcements/1/" would either route to the rule defined for "forum", or try to use a "forum/handler.php").  The handlers then tend to manage the rest of the URL using regular expressions; each different aspect of each application tends to have its own file to fetch data from the database, and a template to display that information.
 
-The implementation code can be found here: \url{http://github.com/nikker/cis451-final/}
+The implementation code can be found here: \url{http://github.com/nikker/cis451/}
 
 \newpage
 \section{Conclusion}
