@@ -10,7 +10,6 @@ $in = file_get_contents("../inc/htaccess.tpl");
 $out = preg_replace_callback(
 	'/{{ ([A-Z_]+) }}/',
 	function ($matches) {
-		var_dump($matches);
 		if (!defined($matches[1])) {
 			die(sprintf("The constant %s is not defined", $matches[1]));
 		} else {
