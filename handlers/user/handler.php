@@ -12,11 +12,11 @@ $rules = array(
 foreach ($rules as $regex=>$handler) {
   if (preg_match($regex, $uri, $matches)) {
     if (is_array($handler)) $handler = $handler[$_SERVER['REQUEST_METHOD']];
-    Beta::run_handler($handler, $uri, $matches);
+    Beta::run_handler('user', $handler, $uri, $matches);
   }
 }
 
-Beta::run_handler('404.php');
+Beta::not_found();
 
 
 ?>

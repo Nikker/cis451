@@ -21,7 +21,7 @@ class Beta {
 			$db_cnf['port']
 		) or die('Could not connect to database');
 
-		include_once(BETA_ROOT_PATH . '/lib/savant/Savant3.php');
+		require_once(BETA_ROOT_PATH . '/lib/savant/Savant3.php');
 
 		$tpl = new Savant3(array(
 			'template_path' => array(BETA_TEMPLATE_DIR),
@@ -69,16 +69,27 @@ class Beta {
   }
 
   // Include the specified handler else a 404 else display a basic 404
-  public static function run_handler($h, $uri = '', $raw_params = array()) {
+  public static function run_handler($path, $h, $uri = '', $raw_params = array()) {
     $params = array_map(array(self::db(),'real_escape_string'),$raw_params);
-    if (!include_once($h)) {
-      if (!include_once('404.php')) {
-        header("HTTP/1.0 404 Not Found");
-        echo "404 - Page not found";
-      }
+		$handler_path = BETA_CONTROLLER_DIR . DIRECTORY_SEPARATOR . $path . DIRECTORY_SEPARATOR . $h;
+    if (!@include_once($handler_path)) {
+			error_log("Unable to find handler: {$path}{$h}");
+			self::not_found();
     }
     exit;
   }
+
+	public static function not_found() {
+		header("HTTP/1.0 404 Not Found");
+		self::display("errors/404.tpl.php", "Page not found");
+		exit;
+	}
+
+	public static function basic_404() {
+		header("HTTP/1.0 404 Not Found");
+		echo "404 - Page not found";
+		exit;
+	}
 
 	public static function display($content_tpl, $title = "", $args = array()) {
 		$tpl = self::tpl();
@@ -89,6 +100,10 @@ class Beta {
 		$tpl->content = $tpl->fetch($content_tpl);
 		$tpl->display();
 		$tpl->reset();
+	}
+
+	public static function add_stylesheet($stylesheet) {
+		self::tpl()->stylesheets[] = $stylesheet;
 	}
 
   public static function error_page($title, $message, $status_code = 404) {
@@ -114,6 +129,14 @@ class Beta {
 			else die("Database error");
 		}
 		return $result;
+	}
+
+	public static function get_static_file($path) {
+		return BETA_ROOT_URL . DIRECTORY_SEPARATOR . "static" . DIRECTORY_SEPARATOR . $path;
+	}
+
+	public static function static_file($path) {
+		echo self::get_static_file($path);
 	}
 
 }

@@ -12,10 +12,6 @@ RewriteBase {{ BETA_ROOT_URL }}
 RewriteRule ^.*$ - [E=STRIPPED_REQUEST:$0]
 RewriteRule . - [E=SITE_BASE:{{ BETA_ROOT_PATH }}]
 
-# Serve things in the statics directory as if they were at the root
-RewriteCond %{ENV:SITE_BASE}/static/%{ENV:STRIPPED_REQUEST} -f
-RewriteRule ^.*$ static/$0 [L]
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !(.*)/$
 RewriteRule ^.*$ $0/ [L,R=301]

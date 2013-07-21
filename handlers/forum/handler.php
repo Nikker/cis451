@@ -1,8 +1,6 @@
 <?php
 
-set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
-
-$tpl->stylesheets[] = 'forum.css';
+Beta::add_stylesheet('forum.css');
 
 $rules = array(
   '#^/?$#' => 'list.php',
@@ -13,10 +11,10 @@ $rules = array(
 foreach ($rules as $regex=>$handler) {
   if (preg_match($regex, $uri, $matches)) {
     if (is_array($handler)) $handler = $handler[$_SERVER['REQUEST_METHOD']];
-    Beta::run_handler($handler, $uri, $matches);
+    Beta::run_handler('forum', $handler, $uri, $matches);
   }
 }
 
-Beta::run_handler('404.php');
+Beta::not_found();
 
 ?>

@@ -3,9 +3,9 @@
 <head>
 	<meta charset="utf-8" />
 	<title><?php $this->title and print $this->eprint($this->title) . " | "; ?>Shukumei Beta</title>
-	<link rel="stylesheet" href="<?php echo BETA_ROOT_URL; ?>/style/style.css" />
+	<link rel="stylesheet" href="<?php Beta::static_file('style/style.css'); ?>" />
   <?php if (property_exists($this, 'stylesheets')): foreach ($this->stylesheets as $stylesheet): ?>
-    <link rel="stylesheet" href="<?php echo BETA_ROOT_URL; ?>/style/<?php echo $stylesheet; ?>" />
+    <link rel="stylesheet" href="<?php Beta::static_file("style/$stylesheet"); ?>" />
   <?php endforeach; endif; ?>
 </head>
 <body>
@@ -15,7 +15,7 @@
 			<div id="circle"></div>
 			<div id="search">
         <form action="<?php echo BETA_ROOT_URL; ?>/search/" method="post">
-          <input type="text" placeholder="search" name="q" /> <input type="image" src="<?php echo BETA_ROOT_URL; ?>/style/images/go.png" value="go" />
+					<input type="text" placeholder="search" name="q" /> <input type="image" src="<?php Beta::static_file('style/images/go.png'); ?>" value="go" />
         </form>
 			</div>
 			<div id="quick-menu" class="menu">

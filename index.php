@@ -9,16 +9,16 @@ $uri = str_replace(BETA_ROOT_URL, '', $request);
 // Given a URI request such as "/forum/...", a handler "forum/handler.php" 
 // will be automatically attempted if 'forum' is not a key in the following array
 $dirs = array(
-  '' => 'home.php'
+  '' => 'base/home.php'
 );
 
 // Get the directory from the URI
 preg_match('#^/(?<dir>[^/]*)(?<subpath>.*)$#', $uri, $match);
 
 if (array_key_exists($match['dir'], $dirs)) {
-  Beta::run_handler($dirs[$match['dir']], $match['subpath']);
+  Beta::run_handler('', $dirs[$match['dir']], $match['subpath']);
 } else {
-  Beta::run_handler("{$match['dir']}/handler.php", $match['subpath']);
+  Beta::run_handler('', "{$match['dir']}/handler.php", $match['subpath']);
 }
 
 ?>
