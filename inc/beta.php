@@ -139,6 +139,14 @@ class Beta {
 		echo self::get_static_file($path);
 	}
 
+	public static function get_url() {
+		return BETA_ROOT_URL . "/" . implode('/', array_map('urlencode',func_get_args()));
+	}
+
+	public static function url() {
+		echo call_user_func_array(array(self, 'get_url'), func_get_args());
+	}
+
 }
 
 Beta::init();
